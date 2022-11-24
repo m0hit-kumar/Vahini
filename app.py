@@ -1,10 +1,11 @@
 from flask import request
 from flask import Flask
 from flask import jsonify
-# import numpy as np 
+# need to remove
+# import numpy as np
 # import string
 # from nltk.corpus import stopwords
-# import pandas as pd 
+# import pandas as pd
 # from sklearn.feature_extraction.text import CountVectorizer
 # from sklearn.tree import DecisionTreeClassifier
 # from sklearn.feature_extraction.text import TfidfTransformer,TfidfVectorizer
@@ -16,16 +17,17 @@ import pickle
 
 app = Flask(__name__)
 
-@app.route('/',methods=['GET'])
+
+@app.route('/', methods=['GET'])
 def index():
     global model
-    model = pickle.load(open('model.pkl','rb'))
+    model = pickle.load(open('model.pkl', 'rb'))
     return "<h1>Vahini Chatbot API</h1>"
 
 
-@app.route("/ml/reply",methods=['GET'])
+@app.route("/ml/reply", methods=['GET'])
 def reply():
-    ques = request.args.get('question',default = "hello",type=str )
+    ques = request.args.get('question', default="hello", type=str)
     ques = [ques]
     ans = model.predict(ques)[0]
-    return jsonify(reply = ans)
+    return jsonify(reply=ans)
