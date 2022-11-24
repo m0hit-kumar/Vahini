@@ -2,24 +2,12 @@ from flask import request
 from flask import Flask
 import string
 from flask import jsonify
-# import numpy as np
-# import string
-# from nltk.corpus import stopwords
-# import pandas as pd 
-# # import pickle
-import gzip,pickle
+import pickle
 def cleaner(x):
     return [a for a in (''.join([a for a in x if a not in string.punctuation])).lower().split()]
 
-# test for ML
-
 app = Flask(__name__)
 
-
- 
-# with open('./model.pkl', 'rb') as f:
-#     model = pickle.load(f)
-# model=pickle.load(open('model.pkl', 'rb'))
 
 class CustomUnpickler(pickle.Unpickler):
 
@@ -42,4 +30,4 @@ def reply():
     ques = [ques]
     ans = model.predict(ques)[0]
     return jsonify(reply=ans)
-    # return "< h1 > hi < /h1 >"
+ 
