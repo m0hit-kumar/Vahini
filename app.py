@@ -1,7 +1,6 @@
 from flask import request
 from flask import Flask
 from flask import jsonify
-# need to remove
 # import numpy as np
 # import string
 # from nltk.corpus import stopwords
