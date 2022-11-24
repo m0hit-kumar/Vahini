@@ -19,14 +19,15 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    global model
-    model = pickle.load(open('model.pkl', 'rb'))
+    # global model
+    # model = pickle.load(open('model.pkl', 'rb'))
     return "<h1>Vahini Chatbot API</h1>"
 
 
 @app.route("/ml/reply", methods=['GET'])
 def reply():
-    ques = request.args.get('question', default="hello", type=str)
-    ques = [ques]
-    ans = model.predict(ques)[0]
-    return jsonify(reply=ans)
+    # ques = request.args.get('question', default="hello", type=str)
+    # ques = [ques]
+    # ans = model.predict(ques)[0]
+    # return jsonify(reply=ans)
+    return "< h1 > hi < /h1 >"
